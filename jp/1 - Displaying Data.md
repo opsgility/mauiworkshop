@@ -27,7 +27,7 @@
 
 2. **MonkeyFinder.sln**を開きます。このソリューションには、Android、iOS、macOS、Windows を対象とするメインの .NET MAUI プロジェクトである **MonkeyFinder** という 1 つのプロジェクトが含まれています。これには、モデル、ビュー、ViewModels、Services など、アプリのすべてのスキャフォールディングが含まれます。
 
-    ![複数のフォルダを持つモンキーファインダーアプリのソリューション](画像/Solution.png)
+    ![複数のフォルダを持つモンキーファインダーアプリのソリューション](images/Solution.png)
 
 3. **ソリューション** を右クリックし、**再構築** を選択します。**MonkeyFinder** プロジェクトには、ラボで使用する空白のコード ファイルと XAML ページもあります。変更するすべてのコードは、ラボの期間中、このプロジェクトに含まれます。
 
@@ -49,51 +49,51 @@
 
 #### リソースファイル
 
-クロスプラットフォーム アプリ開発のリソース管理は、従来から問題視されてきました。各プラットフォームには、リソースを管理するための独自のアプローチがあり、各プラットフォームに実装する必要があります。たとえば、プラットフォームごとに異なる画像要件があり、通常は各画像の複数のバージョンを異なる解像度で作成する必要があります。したがって、通常、1 つの画像をプラットフォームごとに異なる解像度で複数回複製する必要があり、結果の画像はプラットフォームごとに異なるファイル名とフォルダの規則を使用する必要があります。
+クロスプラットフォーム アプリ開発のリソース管理は、従来から問題視されてきました。各プラットフォームには、リソースを管理するための独自のアプローチがあり、各プラットフォームに実装する必要があります。たとえば、プラットフォームごとに異なるimages要件があり、通常は各imagesの複数のバージョンを異なる解像度で作成する必要があります。したがって、通常、1 つのimagesをプラットフォームごとに異なる解像度で複数回複製する必要があり、結果のimagesはプラットフォームごとに異なるファイル名とフォルダの規則を使用する必要があります。
 
-.NET MAUI 単一プロジェクトを使用すると、リソース ファイルを 1 つの場所に格納しながら、各プラットフォームで使用することができます。これには、フォント、画像、アプリのアイコン、スプラッシュ画面、未加工のアセットが含まれます。
+.NET MAUI 単一プロジェクトを使用すると、リソース ファイルを 1 つの場所に格納しながら、各プラットフォームで使用することができます。これには、フォント、images、アプリのアイコン、スプラッシュ画面、未加工のアセットが含まれます。
 
 > **重要:** 各イメージ リソース ファイルはソース イメージとして使用され、ビルド時に各プラットフォームに必要な解像度のイメージが生成されます。
 
 リソース ファイルは、.NET MAUI アプリ プロジェクトの _Resources_ フォルダー、または _Resources_ フォルダーの子フォルダーに配置し、ビルド アクションを正しく設定する必要があります。次の表は、各リソース ファイルの種類ごとのビルド アクションを示しています。
 
-|リソース |ビルド アクション |
-|-------- |------------ |
-|アプリのアイコン |マウイアイコン |
-|フォント |マウイフォント |
-|画像|マウイイメージ |
-|スプラッシュ画面 |マウイ島スプラッシュスクリーン |
-|未加工資産 |マウイアセット |
+| Resource | Build action |
+| -------- | ------------ |
+| App icon | MauiIcon |
+| Fonts | MauiFont |
+| Images | MauiImage |
+| Splash screen | MauiSplashScreen |
+| Raw assets | MauiAsset |
 
-<!--|CSS ファイル |マウイ島 |-->
+<!--| CSS files | MauiCss | -->
 
 > **注:** XAML ファイルは .NET MAUI アプリ プロジェクトにも格納され、プロジェクト テンプレートと項目テンプレートによって作成されると、**MauiXaml** ビルド アクションが自動的に割り当てられます。ただし、通常、XAML ファイルはアプリ プロジェクトの _Resources_ フォルダーには配置されません。
 
-リソース ファイルが .NET MAUI アプリ プロジェクトに追加されると、リソースに対応するエントリがプロジェクト (.csproj) ファイルに作成されます。リソース ファイルを追加した後、そのビルド アクションを **[プロパティ]** ウィンドウで設定できます。次のスクリーンショットは、子フォルダー内の画像リソースとフォント リソースを含む _Resources_ フォルダーを示しています。
+リソース ファイルが .NET MAUI アプリ プロジェクトに追加されると、リソースに対応するエントリがプロジェクト (.csproj) ファイルに作成されます。リソース ファイルを追加した後、そのビルド アクションを **[プロパティ]** ウィンドウで設定できます。次のスクリーンショットは、子フォルダー内のimagesリソースとフォント リソースを含む _Resources_ フォルダーを示しています。
 
-![画像とフォントリソースのスクリーンショット。(画像/ResourcesSingleProject.png)
+![imagesとフォントリソースのスクリーンショット。(images/ResourcesSingleProject.png)
 
 _Resources_ フォルダーの子フォルダーは、アプリのプロジェクト ファイルを編集して、リソースの種類ごとに指定できます。
 
-'''xml
+```xml
 <ItemGroup>
-    <!--イメージズ - >
-    <MauiImage include="リソース\images\*" />
+    <!-- Images -->
+    <MauiImage Include="Resources\Images\*" />
 
-    <!--フォント - >
-    <MauiFont include ="リソース\フォント\*" />
+    <!-- Fonts -->
+    <MauiFont Include="Resources\Fonts\*" />
 
-    <!-- Raw アセット (「Resources\Raw」プレフィックスも削除します) -->
-    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(ファイル名)%(拡張子)" />
+    <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 </ItemGroup>
 ```
 
 ワイルドカード文字 ('*') は、フォルダ内のすべてのファイルが指定されたリソース・タイプとして扱われることを示します。さらに、子フォルダのすべてのファイルを含めることもできます。
 
-'''xml
+```xml
 <ItemGroup>
-    <!--イメージズ - >
-    <MauiImage include="リソース\画像\**\*" />
+    <!-- Images -->
+    <MauiImage Include="Resources\Images\**\*" />
 </ItemGroup>
 ```
 
@@ -103,30 +103,30 @@ _Resources_ フォルダーの子フォルダーは、アプリのプロジェ�
 
 ### アプリのアイコン
 
-アプリ アイコンをアプリ プロジェクトに追加するには、プロジェクトの _Resources\Images_ フォルダーに画像をドラッグし、**プロパティ** ウィンドウでアイコンのビルド アクションを **MauiIcon** に設定します。これにより、プロジェクトファイルに対応するエントリが作成されます。
+アプリ アイコンをアプリ プロジェクトに追加するには、プロジェクトの _Resources\Images_ フォルダーにimagesをドラッグし、**プロパティ** ウィンドウでアイコンのビルド アクションを **MauiIcon** に設定します。これにより、プロジェクトファイルに対応するエントリが作成されます。
 
-'''xml
-<MauiIcon include="Resources\Images\appicon.png" />
+```xml
+<MauiIcon Include="Resources\Images\appicon.png" />
 ```
 
 ビルド時に、アプリのアイコンはターゲット プラットフォームとデバイスの正しいサイズにサイズ変更されます。その後、サイズ変更されたアプリのアイコンがアプリのパッケージに追加されます。アプリ アイコンは、デバイス上やアプリ ストアでアプリを表すために使用されるなど、複数の用途があるため、複数の解像度にサイズ変更されます。
 
-#### 画像
+#### images
 
-イメージをアプリ プロジェクトに追加するには、イメージをプロジェクトの _Resources\Images_ フォルダーにドラッグし、**プロパティ** ウィンドウでビルド アクションを **MauiImage** に設定します。これにより、プロジェクトファイル内の画像ごとに対応するエントリが作成されます。
+イメージをアプリ プロジェクトに追加するには、イメージをプロジェクトの _Resources\Images_ フォルダーにドラッグし、**プロパティ** ウィンドウでビルド アクションを **MauiImage** に設定します。これにより、プロジェクトファイル内のimagesごとに対応するエントリが作成されます。
 
-'''xml
-<MauiImage include="リソース\画像\logo.jpg" />
+```xml
+<MauiImage Include="Resources\Images\logo.jpg" />
 ```
 
-ビルド時に、イメージのサイズはターゲット プラットフォームとデバイスに適した解像度に変更されます。その後、サイズ変更された画像がアプリ パッケージに追加されます。
+ビルド時に、イメージのサイズはターゲット プラットフォームとデバイスに適した解像度に変更されます。その後、サイズ変更されたimagesがアプリ パッケージに追加されます。
 
 #### フォント
 
 True Type 形式 (TTF) フォントと Open Type フォント (OTF) フォントをアプリ プロジェクトに追加するには、それらをプロジェクトの _Resources\Fonts_ フォルダーにドラッグし、**プロパティ** ウィンドウでビルド アクションを **MauiFont** に設定します。これにより、プロジェクトファイル内のフォントごとに対応するエントリが作成されます。
 
-'''xml
-<MauiFont include ="リソース\フォント\OpenSans-Regular.ttf" />
+```xml
+<MauiFont Include="Resources\Fonts\OpenSans-Regular.ttf" />
 ```
 
 ビルド時に、フォントはアプリ パッケージにコピーされます。
@@ -137,8 +137,8 @@ True Type 形式 (TTF) フォントと Open Type フォント (OTF) フォント
 
 スラッシュ画面をアプリ プロジェクトに追加するには、イメージをプロジェクトの _Resources\Images_ フォルダーにドラッグし、**プロパティ** ウィンドウでイメージのビルド アクションを **MauiSplashScreen** に設定します。これにより、プロジェクトファイルに対応するエントリが作成されます。
 
-'''xml
-<MauiSplashScreen include="リソース\画像\splashscreen.svg" />
+```xml
+<MauiSplashScreen Include="Resources\Images\splashscreen.svg" />
 ```
 
 ビルド時に、スプラッシュ画面のイメージは、ターゲット プラットフォームとデバイスの正しいサイズにサイズ変更されます。その後、サイズ変更されたスプラッシュ画面がアプリ パッケージに追加されます。
@@ -147,8 +147,8 @@ True Type 形式 (TTF) フォントと Open Type フォント (OTF) フォント
 
 HTML、JSON、ビデオなどの未加工のアセット ファイルをアプリ プロジェクトに追加するには、プロジェクトの _Resources_ フォルダー (または _Resources\Assets_ などのサブフォルダー) にドラッグし、**プロパティ** ウィンドウでビルド アクションを 'MauiAsset' に設定します。これにより、プロジェクトファイル内のアセットごとに対応するエントリが作成されます。
 
-'''xml
-<MauiAsset Include="リソース\アセット\index.html" />
+```xml
+<MauiAsset Include="Resources\Assets\index.html" />
 ```
 
 その後、未加工のアセットは、必要に応じてコントロールで使用できます。
@@ -167,34 +167,34 @@ HTML、JSON、ビデオなどの未加工のアセット ファイルをアプ�
 
 'MauiProgram' クラスは、少なくとも実行するアプリを提供する必要があります。
 
-'''cシャープ
-名前空間 MyMauiApp;
+```csharp
+namespace MyMauiApp;
 
-public static class MauiProgram (英語)
+public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
-        ビルダ
+        builder
             .UseMauiApp<App>();
 
-        return ビルダー。build();
+        return builder.Build();
     }
 }  
 ```
 
 'App' クラスは 'Application' クラスから派生します。
 
-'''cシャープ
-名前空間 MyMauiApp;
+```csharp
+namespace MyMauiApp;
 
-public class アプリ : アプリケーション
+public class App : Application
 {
-    公開アプリ()
+    public App()
     {
-        初期化コンポーネント();
+        InitializeComponent();
 
-        MainPage = 新しいAppShell();
+        MainPage = new AppShell();
     }
 }
 ```
@@ -203,23 +203,23 @@ public class アプリ : アプリケーション
 
 フォントはアプリに追加して、ファイル名またはエイリアスで参照できます。これは、'MauiAppBuilder' オブジェクトで 'ConfigureFonts' メソッドを呼び出すことによって実現されます。次に、'IFontCollection' オブジェクトで 'AddFont' メソッドを呼び出して、必要なフォントを追加します。
 
-'''cシャープ
+```csharp
 
-名前空間 MyMauiApp;
+namespace MyMauiApp;
 
-public static class MauiProgram (英語)
+public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
-        ビルダ
+        builder
             .UseMauiApp<App>()
-            .ConfigureFonts(フォント =>
+            .ConfigureFonts(fonts =>
             {
-                フォント。AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
 
-        return ビルダー。build();
+        return builder.Build();
     }
 }
 ```
@@ -228,9 +228,9 @@ public static class MauiProgram (英語)
 
 アプリで使用されるカスタム フォントは、.csproj ファイルに含める必要があります。これは、ファイル名を参照するか、ワイルドカードを使用することで実現できます。
 
-'''xml
+```xml
 <ItemGroup>
-   <MauiFont include ="リソース\フォント\*" />
+   <MauiFont Include="Resources\Fonts\*" />
 </ItemGroup>
 ```
 
@@ -239,17 +239,17 @@ public static class MauiProgram (英語)
 
 フォントは、ファイル拡張子なしでその名前を参照することで使用できます。
 
-'''xaml
-<!-- フォント名を使用 -->
-<ラベルテキスト="Hello .NET MAUI"
-       FontFamily="OpenSans-レギュラー" />
+```xaml
+<!-- Use font name -->
+<Label Text="Hello .NET MAUI"
+       FontFamily="OpenSans-Regular" />
 ```
 
 または、エイリアスを参照して使用することもできます。
 
-'''xaml
-<!-- フォントエイリアスを使用する -->
-<ラベルテキスト="Hello .NET MAUI"
+```xaml
+<!-- Use font alias -->
+<Label Text="Hello .NET MAUI"
        FontFamily="OpenSansRegular" />
 ```
 
@@ -280,23 +280,23 @@ public static class MauiProgram (英語)
     https://json2csharp.com
     ```
 
-    ![jsonをc#クラスに変換する](画像/Convert.png)
+    ![jsonをc#クラスに変換する](images/Convert.png)
 
 2. Visual Studio で、**Model** フォルダーを展開し、**Monkey.cs** を選択します。 
 
-    ![オープンMonkey.cs](画像/OpenMonkeyCS.png)
+    ![オープンMonkey.cs](images/OpenMonkeyCS.png)
 
 3. **Monkey.cs**で、**json2csharp.com**からコピーしたプロパティを次のようにファイルに貼り付けます。 
 
-    ![プロパティの追加](画像/AddProperties.png)
+    ![プロパティの追加](images/AddProperties.png)
 
 4. さらに、**System.Text.Json** を使用してデータを逆シリアル化するため、パフォーマンスを向上させるためにコードを動的に生成する **MonkeyContext** を追加します。次のコードはこれを有効にし、将来使用します。
 
     > Monkey クラスの最後の中括弧の下に次のクラスを追加します。
 
-    '''cシャープ
-    [JsonSerializable(typeof(リスト<モンキー>))]
-    内部シールされた部分クラス MonkeyContext : JsonSerializerContext
+    ```csharp
+    [JsonSerializable(typeof(List<Monkey>))]
+    internal sealed partial class MonkeyContext : JsonSerializerContext
     {
 
     }
@@ -304,57 +304,57 @@ public static class MauiProgram (英語)
 
 ### データの表示
 
-任意のデータ型のハードコーディングされたデータを、**MainPage.xaml** ファイル内の **CollectionView** に表示できます。これにより、**ItemTemplate** にいくつかの単純な画像とラベルを設定することで、ユーザー インターフェイスを構築できます。 
+任意のデータ型のハードコーディングされたデータを、**MainPage.xaml** ファイル内の **CollectionView** に表示できます。これにより、**ItemTemplate** にいくつかの単純なimagesとラベルを設定することで、ユーザー インターフェイスを構築できます。 
 
 1. **Visual Studio** で **MainPage.xaml** を選択します。
 
-    ![Minepageを開く](画像/OpenMyImpge.png)
+    ![Minepageを開く](images/OpenMyImpge.png)
 
 2. まず、**MainPage.xaml** の ContentPage 要素の属性として新しい名前空間を追加する必要があります。これにより、データバインディングの目的で上記のMonkeyクラスを参照できるようになります。
 
-    '''xml
+    ```xml
     xmlns:model="clr-namespace:MonkeyFinder.Model"
     ```
 
-    ![XMLNamespace追加](画像/add-monkey-namespace.png)
+    ![XMLNamespace追加](images/add-monkey-namespace.png)
 
 3. MainPage.xaml の **ContentPage** に次のものを追加します。
 
-    '''xml
-    <コレクションビュー>
+    ```xml
+    <CollectionView>
         <CollectionView.ItemsSource>
-            <x:配列 Type="{x:Type model:Monkey}">
-                <model:モンキー
-                    名前 = "ヒヒ"
-                    イメージ="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
-                    Location="アフリカとアジア" />
-                <model:モンキー
-                    名前="オマキザルモンケ"
-                    イメージ="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/capuchin.jpg"
-                    Location="中南米" />
-                <model:モンキー
-                    名前="赤すねのドゥーク"
-                    画像="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/douc.jpg"
-                    Location="ベトナム" />
-            </x:配列>
+            <x:Array Type="{x:Type model:Monkey}">
+                <model:Monkey
+                    Name="Baboon"
+                    Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
+                    Location="Africa and Asia" />
+                <model:Monkey
+                    Name="Capuchin Monkey"
+                    Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/capuchin.jpg"
+                    Location="Central and South America" />
+                <model:Monkey
+                    Name="Red-shanked douc"
+                    Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/douc.jpg"
+                    Location="Vietnam" />
+            </x:Array>
         </CollectionView.ItemsSource>
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:Monkey">
                 <HorizontalStackLayout Padding="10">
-                    <画像
-                        アスペクト="アスペクトフィル"
+                    <Image
+                        Aspect="AspectFill"
                         HeightRequest="100"
-                        source="{バインディング画像}"
+                        Source="{Binding Image}"
                         WidthRequest="100" />
-                    <ラベル verticalOptions="center" textColor="グレー">
-                        <ラベル.テキスト>
-                            <MultiBinding StringFormat="{}{0} |{1}">
-                                <バインディングパス="名前" />
-                                <バインディングパス="場所" />
-                            </マルチバインディング>
-                        </Label.Textです>
-                    </ラベル>
-                </HorizontalStackLayout です>
+                    <Label VerticalOptions="Center" TextColor="Gray">
+                        <Label.Text>
+                            <MultiBinding StringFormat="{}{0} | {1}">
+                                <Binding Path="Name" />
+                                <Binding Path="Location" />
+                            </MultiBinding>
+                        </Label.Text>
+                    </Label>
+                </HorizontalStackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
@@ -366,21 +366,21 @@ public static class MauiProgram (英語)
 
 1. **Windows マシン** をクリックしてアプリのデバッグを開始し、アプリを Windows アプリとして表示します。 
 
-    ![Windows上で動作するアプリは3匹のサルを表示しています](画像/app-windows-view1.png)
+    ![Windows上で動作するアプリは3匹のサルを表示しています](images/app-windows-view1.png)
 
 
 > リマインダー: ラボ仮想マシンを使用している場合は、この手順をスキップしてください。 
 
 1. Visual Studioで、デバッグプロンプト(Windowsマシン)の横にある下向き矢印をクリックして、Androidエミュレータに変更します。[フレームワーク] の横の矢印をクリックし、[**net8.0-android** ] を選択します。
 
-    ![複数のフレームワークを示す Visual Studio デバッグ ドロップダウン](画像/SelectFramework.png)
+    ![複数のフレームワークを示す Visual Studio デバッグ ドロップダウン](images/SelectFramework.png)
 
 1.検査後、アプリケーションを閉じます。
 
 1. 「Pixel 5 - API 34」ボタンをクリックして、Android Emulator を使用してアプリのデバッグを開始します。 
 
-    ![Androidエミュレータ](画像/android-emulator.png)
+    ![Androidエミュレータ](images/android-emulator.png)
 
-    ![Androidで実行されているアプリは3匹のサルを表示しています](画像/CodedMonkeys.png)
+    ![Androidで実行されているアプリは3匹のサルを表示しています](images/CodedMonkeys.png)
 
 >注:Androidを選択したら、デフォルトのオプションに従ってください。ダウンロードと解凍には数分かかります。
